@@ -7,3 +7,6 @@
 [submodule "package/luci-app-unblockneteasemusic"]
 	path = package/luci-app-unblockneteasemusic
 	url = https://github.com/immortalwrt/luci-app-unblockneteasemusic.git
+[submodule "package/minieap-openwrt"]
+	path = package/minieap-openwrt
+	url = https://github.com/dianhsu/minieap-openwrt.git
