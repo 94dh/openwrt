@@ -490,11 +490,11 @@ append_hs20_conn_capab() {
 }
 
 append_radius_acct_req_attr() {
-	append bss_conf "radius_acct_req_attr=$1" "$N"
+	[ -n "$1" ] && append bss_conf "radius_acct_req_attr=$1" "$N"
 }
 
 append_radius_auth_req_attr() {
-	append bss_conf "radius_auth_req_attr=$1" "$N"
+	[ -n "$1" ] && append bss_conf "radius_auth_req_attr=$1" "$N"
 }
 
 append_airtime_sta_weight() {
@@ -805,6 +805,7 @@ hostapd_set_bss_options() {
 				;;
 			esac
 
+			[ -n "$network_ifname" ] && append bss_conf "ft_iface=$network_ifname" "$N"
 			append bss_conf "mobility_domain=$mobility_domain" "$N"
 			append bss_conf "ft_psk_generate_local=$ft_psk_generate_local" "$N"
 			append bss_conf "ft_over_ds=$ft_over_ds" "$N"
