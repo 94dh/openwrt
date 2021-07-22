@@ -7,3 +7,6 @@
 [submodule "package/luci-app-unblockneteasemusic"]
 	path = package/luci-app-unblockneteasemusic
 	url = https://github.com/immortalwrt/luci-app-unblockneteasemusic.git
+[submodule "package/v2ray-core"]
+	path = package/v2ray-core
+	url = https://github.com/kuoruan/openwrt-v2ray.git
