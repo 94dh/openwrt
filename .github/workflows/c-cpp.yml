@@ -32,4 +32,4 @@ jobs:
     - name: build
       run: |
         echo `nproc`
-        make -j`nproc`
+        make -j1 V=sc
