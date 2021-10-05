@@ -26,3 +26,9 @@ jobs:
       run: |
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+    - name: update config
+      run: |
+        curl -o .config https://gist.githubusercontent.com/dianhsu/10393817853517f2237f6b9b98051855/raw/966a739669ad39e6540337f57e20d7a181d2c649/x86_64.config
+    - name: build
+      run: |
+        make
