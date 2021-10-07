@@ -32,4 +32,5 @@ jobs:
     - name: build
       run: |
         echo `nproc`
-        make -j1 V=sc
+        make package/feeds/luci/luci-base/compile V=99
+        make -j`nproc`
