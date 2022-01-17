@@ -12,9 +12,9 @@ PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL=$(PROJECT_GIT)/project/procd.git
-PKG_SOURCE_DATE:=2021-10-22
-PKG_SOURCE_VERSION:=1c36d3d0a8fc87b97e236269f5104e139f1d641d
-PKG_MIRROR_HASH:=a5d64ab80c53bf3cb77e796aa673c2ba7d0a578fd443b802688ce91ee96a3f0d
+PKG_MIRROR_HASH:=0e506062a992f77979bd59eb51fb5d500e45197cc7bfba3a9302415d754dbfd1
+PKG_SOURCE_DATE:=2022-01-11
+PKG_SOURCE_VERSION:=ac2b8b365bdbcbf292f77409d180ec3c0963faf3
 CMAKE_INSTALL:=1
 
 PKG_LICENSE:=GPL-2.0
@@ -72,13 +72,6 @@ define Package/procd-ujail
   TITLE:=OpenWrt process jail helper
 endef
 
-define Package/procd-ujail-console
-  SECTION:=base
-  CATEGORY:=Base system
-  DEPENDS:=+procd-ujail +libubus +libubox
-  TITLE:=OpenWrt process jail console
-endef
-
 define Package/procd-seccomp
   SECTION:=base
   CATEGORY:=Base system
@@ -89,7 +82,7 @@ endef
 define Package/uxc
   SECTION:=base
   CATEGORY:=Base system
-  DEPENDS:=+procd-ujail +libubus +libubox +libblobmsg-json +blockd +rpcd
+  DEPENDS:=+procd-ujail +libubus +libubox +libblobmsg-json +blockd +PACKAGE_uxc:rpcd
   TITLE:=OpenWrt container management
   MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 endef
@@ -146,11 +139,6 @@ define Package/procd-ujail/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/ujail $(1)/sbin/
 endef
 
-define Package/procd-ujail-console/install
-	$(INSTALL_DIR) $(1)/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/ujail-console $(1)/sbin/
-endef
-
 define Package/procd-seccomp/install
 	$(INSTALL_DIR) $(1)/sbin $(1)/lib
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/libpreload-seccomp.so $(1)/lib
@@ -173,6 +161,5 @@ endef
 $(eval $(call BuildPackage,procd))
 $(eval $(call BuildPackage,procd-selinux))
 $(eval $(call BuildPackage,procd-ujail))
-$(eval $(call BuildPackage,procd-ujail-console))
 $(eval $(call BuildPackage,procd-seccomp))
 $(eval $(call BuildPackage,uxc))
